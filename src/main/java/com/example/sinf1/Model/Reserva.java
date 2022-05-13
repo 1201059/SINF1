@@ -1,6 +1,6 @@
 package com.example.sinf1.Model;
 
-import com.mycompany.utilitarios.Data;
+import com.example.utilitarios.Data;
 
 /**
  *

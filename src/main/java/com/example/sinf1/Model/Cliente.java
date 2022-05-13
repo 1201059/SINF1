@@ -1,4 +1,4 @@
-package java;
+package com.example.sinf1.Model;
 
 import java.util.ArrayList;
 import java.util.List;

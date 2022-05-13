@@ -1,6 +1,6 @@
-package java;
+package com.example.sinf1.Model;
 
-import com.mycompany.utilitarios.Data;
+import com.example.utilitarios.Data;
 import java.util.List;
 
 /**
@@ -9,10 +9,9 @@ import java.util.List;
  */
 
 public class Viatura {
-
-  private String tipoViatura, matricula, modelo;
-  private Data data;
-  private List<Marca> lstMarcas;
+    private String tipoViatura, matricula, modelo;
+    private Data data;
+    private List<Marca> lstMarcas;
   
     public Viatura(String tipoViatura, String matricula, String modelo, Data data) {
         this.tipoViatura = tipoViatura;

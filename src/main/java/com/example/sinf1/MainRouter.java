@@ -1,8 +1,14 @@
 package com.example.sinf1;
 
+import com.example.sinf1.Model.Cliente;
+import com.example.sinf1.Model.DAL;
+import com.example.sinf1.Model.Faturacao;
 import com.example.sinf1.Model.Gestor;
+import com.example.sinf1.Model.Lugar;
 import com.example.sinf1.Model.Marca;
-import com.mycompany.utilitarios.Data;
+import com.example.sinf1.Model.Reserva;
+import com.example.sinf1.Model.Viatura;
+import com.example.utilitarios.Data;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServer;
@@ -10,12 +16,7 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.StaticHandler;
-import java.Cliente;
-import java.DAL;
-import java.Faturacao;
-import java.Lugar;
-import java.Reserva;
-import java.Viatura;
+
 
 public class MainRouter extends AbstractVerticle {
     private DAL dal = new DAL();

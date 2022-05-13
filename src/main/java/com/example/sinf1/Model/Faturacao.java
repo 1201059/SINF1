@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package java;
+package com.example.sinf1.Model;
 
-import com.mycompany.utilitarios.Data;
+import com.example.utilitarios.Data;
 
 /**
  *
- * @author arabs
+ * @author grupo2
  */
+
 public class Faturacao {
     Data data;
     int custo;

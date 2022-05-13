@@ -1,4 +1,4 @@
-package java;
+package com.example.sinf1.Model;
 
 import com.example.sinf1.Model.Gestor;
 import com.example.sinf1.Model.Marca;
@@ -29,6 +29,7 @@ public class DAL {
             conn.close();
         }catch(Exception e){ System.out.println(e); }
     }
+
     public static void insereViatura(Viatura v){
         try{
             Connection conn = DBConnection.getConnection();
@@ -44,6 +45,7 @@ public class DAL {
             conn.close();
         }catch(Exception e){ System.out.println(e); }
     }
+
     public static void insereReserva(Reserva r){
         try{
             Connection conn = DBConnection.getConnection();
@@ -59,6 +61,7 @@ public class DAL {
             conn.close();
         }catch(Exception e){ System.out.println(e); }
     }
+
     public static void insereLugar(Lugar l){
         try{
             Connection conn = DBConnection.getConnection();
@@ -71,6 +74,7 @@ public class DAL {
             conn.close();
         }catch(Exception e){ System.out.println(e); }
     }
+
     public static void insereFaturacao(Faturacao f){
         try{
             Connection conn = DBConnection.getConnection();
