@@ -1,11 +1,21 @@
 package com.example.sinf1;
 
+import com.example.sinf1.Model.Gestor;
+import com.example.sinf1.Model.Marca;
+import com.mycompany.utilitarios.Data;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServer;
+import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.StaticHandler;
+import java.Cliente;
+import java.DAL;
+import java.Faturacao;
+import java.Lugar;
+import java.Reserva;
+import java.Viatura;
 
 public class MainRouter extends AbstractVerticle {
     private DAL dal = new DAL();
@@ -64,8 +74,9 @@ public class MainRouter extends AbstractVerticle {
         int dataMes = rc.request().getParam("dataMes");
         int dataAno = rc.request().getParam("dataAno");
         int tempo  = rc.request().getParam("tempo");
+        int custo = rc.request().getParam("custo");
         String email = rc.request().getParam("email");
-        Reserva reserva = new Reserva(new Data(dataDia,dataMes,dataAno),custo, tempo, email);
+        Reserva reserva = new Reserva(new Data(dataDia,dataMes,dataAno), custo, tempo, email);
         dal.insereReserva(reserva);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
@@ -88,7 +99,7 @@ public class MainRouter extends AbstractVerticle {
         int custo = rc.request().getParam("custo");
         int tempoEstacionado = rc.request().getParam("tempoEstacionado");
         String email = rc.request().getParam("email");
-        Lugar lugar = new Faturacao(new Data(dataDia,dataMes,dataAno), custo, tempoEstacionado, email);
+        Faturacao faturacao = new Faturacao(new Data(dataDia,dataMes,dataAno), custo, tempoEstacionado, email);
         dal.insereFaturacao(faturacao);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
@@ -98,8 +109,8 @@ public class MainRouter extends AbstractVerticle {
         int cod = rc.request().getParam("cod");
         String email = rc.request().getParam("email");
         String password = rc.request().getParam("password");
-        Gestot gestor = new Gestor(cod, email, password);
-        dal.insereGestor(gestorr);
+        Gestor gestor = new Gestor(cod, email, password);
+        dal.insereGestor(gestor);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
     }

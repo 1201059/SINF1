@@ -16,7 +16,7 @@ public class Faturacao {
     int tempoEstacionado;
     String email;
 
-    public Faturacao(Data data, int custo, Data tempoEstacionado, String email) {
+    public Faturacao(Data data, int custo, int tempoEstacionado, String email) {
         this.data = data;
         this.custo = custo;
         this.tempoEstacionado = tempoEstacionado;
@@ -38,7 +38,7 @@ public class Faturacao {
         this.custo = custo;
     }
 
-    public void setTempoEstacionado(Data tempoEstacionado) {
+    public void setTempoEstacionado(int tempoEstacionado) {
         this.tempoEstacionado = tempoEstacionado;
     }
 

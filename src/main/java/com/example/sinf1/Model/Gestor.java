@@ -1,7 +1,8 @@
-public class Gestor {
+package com.example.sinf1.Model;
 
-	int cod;
-	String email, password;
+public class Gestor {
+    int cod;
+    String email, password;
     private static int codigo = 0;
 
     public Gestor(int codigo, String email, String password) {

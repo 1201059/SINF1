@@ -1,6 +1,6 @@
-package java;
+package com.example.sinf1.Model;
 
-import utils.Data;
+import com.mycompany.utilitarios.Data;
 
 /**
  *
