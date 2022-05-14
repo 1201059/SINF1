@@ -1,10 +1,11 @@
-package com.example.sinf1.Model;
+package com.example.sinf1.model;
 
-import com.example.sinf1.Model.Gestor;
-import com.example.sinf1.Model.Marca;
-import com.example.sinf1.Model.Reserva;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+
+import com.example.sinf1.model.Gestor;
+import com.example.sinf1.model.Marca;
+import com.example.sinf1.model.Reserva;
 
 /**
  *
