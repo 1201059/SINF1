@@ -65,11 +65,10 @@ public class DAL {
     public static void insereLugar(Lugar l){
         try{
             Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Lugar (numero, ocupacao, tempoEstacionamento, cod) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Lugar (numero, ocupacao, tempoEstacionamento) VALUES (?,?,?,?,?,?,?)");
             stmt.setInt(1, l.getNumero());
             stmt.setInt(2, l.getOcupacao());
             stmt.setInt(3, l.gettempoEstacionamento());
-            stmt.setInt(4, l.getCod());
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }

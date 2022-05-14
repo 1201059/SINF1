@@ -107,7 +107,7 @@ public class MainRouter extends AbstractVerticle {
     }
 
     public void addGestor(RoutingContext rc){
-        int cod = rc.request().getParam("cod");
+        int cod = rc.request().getParam("codigo");
         String email = rc.request().getParam("email");
         String password = rc.request().getParam("password");
         Gestor gestor = new Gestor(cod, email, password);
