@@ -1,6 +1,6 @@
-package com.example.sinf1.Model;
+package com.example.sinf1.model;
 
-import com.example.utilitarios.Data;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,10 +10,10 @@ import java.util.List;
 
 public class Viatura {
     private String tipoViatura, matricula, modelo;
-    private Data data;
+    private Date data;
     private List<Marca> lstMarcas;
   
-    public Viatura(String tipoViatura, String matricula, String modelo, Data data) {
+    public Viatura(String tipoViatura, String matricula, String modelo, Date data) {
         this.tipoViatura = tipoViatura;
         this.matricula = matricula;
         this.modelo = modelo;
@@ -40,7 +40,7 @@ public class Viatura {
         return modelo;
     }
 
-    public Data getData() {
+    public Date getData() {
         return data;
     }
 
@@ -60,7 +60,7 @@ public class Viatura {
         this.modelo = modelo;
     }
 
-    public void setData(Data data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
