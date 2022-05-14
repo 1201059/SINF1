@@ -1,6 +1,6 @@
-package com.example.sinf1.Model;
+package com.example.sinf1.model;
 
-import com.example.utilitarios.Data;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,11 +9,24 @@ import java.util.List;
  */
 
 public class Viatura {
+    private int cod;
     private String tipoViatura, matricula, modelo;
-    private Data data;
+    private Date data;
     private List<Marca> lstMarcas;
+
+    private static int codigo = 0;
+    private static final String STR_DEFAULT = "";
+
+    public Viatura() {
+        this.cod = ++codigo;
+        this.tipoViatura = STR_DEFAULT;
+        this.matricula = STR_DEFAULT;
+        this.modelo = STR_DEFAULT;
+        this.data = new Date();
+    }
   
-    public Viatura(String tipoViatura, String matricula, String modelo, Data data) {
+    public Viatura(String tipoViatura, String matricula, String modelo, Date data) {
+        this.cod = ++codigo;
         this.tipoViatura = tipoViatura;
         this.matricula = matricula;
         this.modelo = modelo;
@@ -21,11 +34,16 @@ public class Viatura {
     }
 
     public  Viatura(Viatura viatura){
+        this.cod=viatura.cod;
         this.tipoViatura=viatura.tipoViatura;
         this.modelo=viatura.modelo;
         this.matricula=viatura.matricula;
         this.data=viatura.data;
 
+    }
+
+    public int getCodigo() {
+        return cod;
     }
 
     public String getTipoViatura() {
@@ -40,7 +58,7 @@ public class Viatura {
         return modelo;
     }
 
-    public Data getData() {
+    public Date getData() {
         return data;
     }
 
@@ -60,7 +78,7 @@ public class Viatura {
         this.modelo = modelo;
     }
 
-    public void setData(Data data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

@@ -1,4 +1,4 @@
-package com.example.sinf1.Model;
+package com.example.sinf1.model;
 
 /**
  *
@@ -10,6 +10,10 @@ public class Marca {
 
     public Marca(String nome) {
         this.nome = nome;
+    }
+
+    public String getNome() {
+        return this.nome;
     }
 
     public void setNome(String nome) {

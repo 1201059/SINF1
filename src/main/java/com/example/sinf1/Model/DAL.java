@@ -1,9 +1,7 @@
-package com.example.sinf1.Model;
+package com.example.sinf1.model;
 
-import com.example.sinf1.Model.Gestor;
-import com.example.sinf1.Model.Marca;
-import com.example.sinf1.Model.Reserva;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 
 /**
@@ -12,8 +10,6 @@ import java.sql.PreparedStatement;
  */
 
 public class DAL {
-    public DAL(){}
-    
     public static void insereCliente(Cliente c){
         try{
             Connection conn = DBConnection.getConnection();
@@ -33,14 +29,11 @@ public class DAL {
     public static void insereViatura(Viatura v){
         try{
             Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Viatura (cod, matricula, modelo, dataDia, dataMes, dataAno) VALUES (?,?,?,?,?,?,?)");
-            stmt.setInt(1, v.getCod());
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Viatura (cod, matricula, modelo, data) VALUES (?,?,?,?,?)");
+            stmt.setInt(1, v.getCodigo());
             stmt.setString(2, v.getMatricula());
             stmt.setString(3, v.getModelo());
-            stmt.setInt(4, v.getdataDia());
-            stmt.setInt(5, v.getdataMes());
-            stmt.setInt(6, v.getdataAno());
-            stmt.setString(7, v.getViatura());
+            stmt.setDate(4, (Date) v.getData());
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }
@@ -50,13 +43,11 @@ public class DAL {
         try{
             Connection conn = DBConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Reserva (dataDia, dataMes, dataAno, custo, tempo, email, cod) VALUES (?,?,?,?,?,?,?)");
-            stmt.setInt(1, r.getdataDia());
-            stmt.setInt(2, r.getdataMes());
-            stmt.setInt(3, r.getdataAno());
+            stmt.setDate(4, (Date) r.getData());
             stmt.setInt(4, r.getCusto());
             stmt.setInt(5, r.getTempo());
             stmt.setString(6, r.getEmail());
-            stmt.setint(7, r.getcod());
+            stmt.setInt(7, r.getCodigo());
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }
@@ -65,11 +56,10 @@ public class DAL {
     public static void insereLugar(Lugar l){
         try{
             Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Lugar (numero, ocupacao, tempoEstacionamento, cod) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Lugar (numero, ocupacao, tempoEstacionamento) VALUES (?,?,?,?,?,?,?)");
             stmt.setInt(1, l.getNumero());
-            stmt.setInt(2, l.getOcupacao());
-            stmt.setInt(3, l.gettempoEstacionamento());
-            stmt.setInt(4, l.getCod());
+            stmt.setString(2, Boolean.toString(l.isOcupacao()));
+            stmt.setInt(3, l.getTempoSegundos());
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }
@@ -78,14 +68,12 @@ public class DAL {
     public static void insereFaturacao(Faturacao f){
         try{
             Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Faturacao (tempo, dataDia, dataMes, dataAno, custo, email, cod) VALUES (?,?,?,?,?,?,?)");
-            stmt.setInt(1, f.getTempo());
-            stmt.setInt(2, f.getdataDia());
-            stmt.setInt(3, f.getdataMes());
-            stmt.setInt(4, f.getdataAno());
-            stmt.setInt(5, f.getCusto());
-            stmt.setString(6, f.getEmail());
-            stmt.setSInt(7, f.getCod());
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Faturacao (tempo, dataDia, custo, email, cod) VALUES (?,?,?,?,?)");
+            stmt.setInt(1, f.getTempoEstacionado());
+            stmt.setDate(2, (Date) f.getData());
+            stmt.setInt(3, f.getCusto());
+            stmt.setString(4, f.getEmail());
+            stmt.setInt(5, f.getCodigo());
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }
@@ -94,14 +82,10 @@ public class DAL {
     public static void insereGestor(Gestor g){
         try{
             Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Cliente (email, password, cod, numFiscal, viaturas, nome, sobreNome) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Gestor (email, password, cod) VALUES (?,?,?)");
             stmt.setString(1, g.getEmail());
             stmt.setString(2, g.getPassword());
             stmt.setInt(3, g.getCodigo());
-            stmt.setInt(4, g.getNrFiscal());
-            stmt.setInt(5, g.getVeiculo());
-            stmt.setString(6, g.getNome());
-            stmt.setString(7, g.getSobreNome());
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }
@@ -110,14 +94,8 @@ public class DAL {
     public static void insereMarca(Marca m){
         try{
             Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Cliente (email, password, cod, numFiscal, viaturas, nome, sobreNome) VALUES (?,?,?,?,?,?,?)");
-            stmt.setString(1, m.getEmail());
-            stmt.setString(2, m.getPassword());
-            stmt.setInt(3, m.getCodigo());
-            stmt.setInt(4, m.getNrFiscal());
-            stmt.setInt(5, m.getVeiculo());
-            stmt.setString(6, c.getNome());
-            stmt.setString(7, c.getSobreNome());
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Marca (nome) VALUES (?)");
+            stmt.setString(1, m.getNome());
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }

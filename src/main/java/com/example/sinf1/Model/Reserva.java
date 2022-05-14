@@ -1,6 +1,6 @@
-package com.example.sinf1.Model;
+package com.example.sinf1.model;
 
-import com.example.utilitarios.Data;
+import java.util.Date;
 
 /**
  *
@@ -8,19 +8,37 @@ import com.example.utilitarios.Data;
  */
 
 public class Reserva {
-    Data data;
+    int cod;
+    Date data;
     int custo;
     int tempo;
     String email;
 
-    public Reserva(Data data, int custo, int tempo, String email) {
+    private static int codigo = 0;
+    private static final String STR_DEFAULT = "";
+    private static final int INT_DEFAULT = 0;
+
+    public Reserva() {
+        this.cod = ++codigo;
+        this.data = new Date();
+        this.custo = INT_DEFAULT;
+        this.tempo = INT_DEFAULT;
+        this.email = STR_DEFAULT;
+    }
+
+    public Reserva(Date data, int custo, int tempo, String email) {
+        this.cod = ++codigo;
         this.data = data;
         this.custo = custo;
         this.tempo = tempo;
         this.email = email;
     }
 
-    public Data getData() {
+    public int getCodigo() {
+        return cod;
+    }
+
+    public Date getData() {
         return data;
     }
 
@@ -36,7 +54,7 @@ public class Reserva {
         return email;
     }
 
-    public void setData(Data data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
