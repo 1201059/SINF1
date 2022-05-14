@@ -8,16 +8,34 @@ import java.util.Date;
  */
 
 public class Reserva {
+    int cod;
     Date data;
     int custo;
     int tempo;
     String email;
 
+    private static int codigo = 0;
+    private static final String STR_DEFAULT = "";
+    private static final int INT_DEFAULT = 0;
+
+    public Reserva() {
+        this.cod = ++codigo;
+        this.data = new Date();
+        this.custo = INT_DEFAULT;
+        this.tempo = INT_DEFAULT;
+        this.email = STR_DEFAULT;
+    }
+
     public Reserva(Date data, int custo, int tempo, String email) {
+        this.cod = ++codigo;
         this.data = data;
         this.custo = custo;
         this.tempo = tempo;
         this.email = email;
+    }
+
+    public int getCodigo() {
+        return cod;
     }
 
     public Date getData() {
