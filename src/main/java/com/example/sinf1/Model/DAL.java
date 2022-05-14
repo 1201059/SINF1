@@ -10,8 +10,6 @@ import java.sql.PreparedStatement;
  */
 
 public class DAL {
-    public DAL(){}
-    
     public static void insereCliente(Cliente c){
         try{
             Connection conn = DBConnection.getConnection();

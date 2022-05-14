@@ -21,9 +21,9 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.StaticHandler;
 
+import static com.example.sinf1.model.DAL.*;
 
 public class MainRouter extends AbstractVerticle {
-    private DAL dal = new DAL();
 
     public void start(Promise<Void> startPromise) throws Exception{
         HttpServer httpServer = vertx.createHttpServer();
@@ -56,7 +56,7 @@ public class MainRouter extends AbstractVerticle {
         int veiculo = Integer.parseInt(rc.request().getParam("veiculo"));
         int cod = Integer.parseInt(rc.request().getParam("cod"));
         Cliente cliente = new Cliente(nome, sobreNome, email, password, nrFiscal);
-        dal.insereCliente(cliente);
+        insereCliente(cliente);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
     }
@@ -74,7 +74,7 @@ public class MainRouter extends AbstractVerticle {
             System.out.println(e);
         }
         Viatura viatura = new Viatura(tipoViatura,matricula, modelo, dataAdesao);
-        dal.insereViatura(viatura);
+        insereViatura(viatura);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
     }
@@ -92,7 +92,7 @@ public class MainRouter extends AbstractVerticle {
         int custo = Integer.parseInt(rc.request().getParam("custo"));
         String email = rc.request().getParam("email");
         Reserva reserva = new Reserva(dataReserva, custo, tempo, email);
-        dal.insereReserva(reserva);
+        insereReserva(reserva);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
     }
@@ -102,7 +102,7 @@ public class MainRouter extends AbstractVerticle {
         boolean ocupacao = Boolean.parseBoolean(rc.request().getParam("ocupacao"));
         int tempoSegundos = Integer.parseInt(rc.request().getParam("tempoSegundos"));
         Lugar lugar = new Lugar(numero, ocupacao, tempoSegundos);
-        dal.insereLugar(lugar);
+        insereLugar(lugar);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
     }
@@ -120,7 +120,7 @@ public class MainRouter extends AbstractVerticle {
         int tempoEstacionado = Integer.parseInt(rc.request().getParam("tempoEstacionado"));
         String email = rc.request().getParam("email");
         Faturacao faturacao = new Faturacao(dataFatura, custo, tempoEstacionado, email);
-        dal.insereFaturacao(faturacao);
+        insereFaturacao(faturacao);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
     }
@@ -130,7 +130,7 @@ public class MainRouter extends AbstractVerticle {
         String email = rc.request().getParam("email");
         String password = rc.request().getParam("password");
         Gestor gestor = new Gestor(cod, email, password);
-        dal.insereGestor(gestor);
+        insereGestor(gestor);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
     }
@@ -138,7 +138,7 @@ public class MainRouter extends AbstractVerticle {
     public void addMarca(RoutingContext rc){
         String nome = rc.request().getParam("nome");
         Marca marca = new Marca(nome);
-        dal.insereMarca(marca);
+        insereMarca(marca);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
     }
