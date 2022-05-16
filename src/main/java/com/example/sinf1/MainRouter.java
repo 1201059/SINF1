@@ -6,13 +6,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.example.sinf1.model.Cliente;
-import com.example.sinf1.model.DAL;
 import com.example.sinf1.model.Faturacao;
 import com.example.sinf1.model.Gestor;
 import com.example.sinf1.model.Lugar;
 import com.example.sinf1.model.Marca;
 import com.example.sinf1.model.Reserva;
 import com.example.sinf1.model.Viatura;
+
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServer;
