@@ -26,7 +26,7 @@ public class Faturacao {
         this.email = STR_DEFAULT;
     }
 
-    public Faturacao(Date data, int custo, int tempoEstacionado, String email) {
+    public Faturacao(int cod, Date data, int custo, int tempoEstacionado, String email) {
         this.cod = ++codigo;
         this.data = data;
         this.custo = custo;

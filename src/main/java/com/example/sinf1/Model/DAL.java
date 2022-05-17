@@ -1,8 +1,13 @@
 package com.example.sinf1.model;
 
+import static com.example.sinf1.model.DBConnection.getConnection;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -10,6 +15,14 @@ import java.sql.PreparedStatement;
  */
 
 public class DAL {
+
+    private String cliente = "cliente";
+    private String viatura = "viatura";
+    private String reserva = "reserva";
+    private String lugar = "lugar";
+    private String faturacao = "faturacao";
+    private String gestor = "gestor";
+
     public static void insereCliente(Cliente c){
         try{
             Connection conn = DBConnection.getConnection();
@@ -26,6 +39,27 @@ public class DAL {
         }catch(Exception e){ System.out.println(e); }
     }
 
+    public  void addCliente (String email, String password, int cod, int nrFiscal, int veiculo , String nome, String sobreNome) throws SQLException{
+        Connection conn = DBConnection.getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Inserir informação" + cliente + "(email, password, cod, nrFiscal, veiculo, nome, sobreNome) VALUES ("+email+","+password+","+cod+","+nrFiscal+","+veiculo+","+nome+","+sobreNome+");");
+        System.out.println("Adicionado com sucesso:" + email);
+    } 
+
+    public ResultSet getCliente() throws SQLException{
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("selecione * from" + cliente + ";");
+        return rs;
+    } 
+
+    public void deleteCliente(int cod) throws SQLException {
+        Connection conn = getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Eliminar " + cliente + " com o seguinte código =" + cod + ";");
+        System.out.println("Eliminado com sucesso!");
+    }
+
     public static void insereViatura(Viatura v){
         try{
             Connection conn = DBConnection.getConnection();
@@ -37,6 +71,27 @@ public class DAL {
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }
+    }
+
+    public  void addViatura (int cod, String matricula, String tipoViatura, String modelo, Date data) throws SQLException{
+        Connection conn = DBConnection.getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Inserir informação" + viatura + "(codigo, tipo de viatura, matricula, modelo, data) VALUES ("+cod+","+tipoViatura+","+matricula+","+modelo+","+data+");");
+        System.out.println("Adicionado com sucesso:" + matricula);
+    } 
+
+    public ResultSet getViatura() throws SQLException{
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("selecione * from" + viatura + ";");
+        return rs;
+    } 
+
+    public void deleteViatura(int cod) throws SQLException {
+        Connection conn = getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Eliminar " + viatura + " com o seguinte código =" + cod + ";");
+        System.out.println("Eliminado com sucesso!");
     }
 
     public static void insereReserva(Reserva r){
@@ -53,6 +108,27 @@ public class DAL {
         }catch(Exception e){ System.out.println(e); }
     }
 
+    public  void addReserva (int cod, Date data, int custo, int tempo, String email) throws SQLException{
+        Connection conn = DBConnection.getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Inserir informação" + reserva + "(codigo, data, custo, tempo, email) VALUES ("+cod+","+data+","+custo+","+tempo+","+email+");");
+        System.out.println("Adicionado com sucesso:" + reserva);
+    } 
+
+    public ResultSet getReserva() throws SQLException{
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("selecione * from" + reserva + ";");
+        return rs;
+    } 
+
+    public void deleteReserva(int cod) throws SQLException {
+        Connection conn = getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Eliminar " + reserva + " com o seguinte código =" + cod + ";");
+        System.out.println("Eliminado com sucesso!");
+    }
+
     public static void insereLugar(Lugar l){
         try{
             Connection conn = DBConnection.getConnection();
@@ -63,6 +139,27 @@ public class DAL {
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }
+    }
+
+    public  void addLugar (int numero, boolean ocupacao, int tempoSegundos) throws SQLException{
+        Connection conn = DBConnection.getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Inserir informação" + lugar + "(numero, ocupacao,tempo) VALUES ("+numero+","+ocupacao+","+tempoSegundos+");");
+        System.out.println("Adicionado com sucesso:" + lugar);
+    } 
+
+    public ResultSet getLugar() throws SQLException{
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("selecione * from" + lugar + ";");
+        return rs;
+    } 
+
+    public void deleteLugar (int numero) throws SQLException {
+        Connection conn = getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Eliminar " + lugar + " com o seguinte código =" + numero + ";");
+        System.out.println("Eliminado com sucesso!");
     }
 
     public static void insereFaturacao(Faturacao f){
@@ -79,6 +176,27 @@ public class DAL {
         }catch(Exception e){ System.out.println(e); }
     }
 
+    public  void addFaturacao (int cod, Date data, int custo, int tempoEstacionado, String email) throws SQLException{
+        Connection conn = DBConnection.getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Inserir informação" + faturacao + "(codigo, data, custo, tempoEstacionado, email) VALUES ("+cod+","+data+","+custo+","+tempoEstacionado+","+email+");");
+        System.out.println("Adicionado com sucesso:" + faturacao);
+    } 
+
+    public ResultSet getFaturacao() throws SQLException{
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("selecione * from" + faturacao + ";");
+        return rs;
+    } 
+
+    public void deleteFaturacao (int cod) throws SQLException {
+        Connection conn = getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Eliminar " + faturacao + " com o seguinte código =" + cod + ";");
+        System.out.println("Eliminado com sucesso!");
+    }
+
     public static void insereGestor(Gestor g){
         try{
             Connection conn = DBConnection.getConnection();
@@ -89,6 +207,27 @@ public class DAL {
             stmt.executeUpdate();
             conn.close();
         }catch(Exception e){ System.out.println(e); }
+    }
+
+    public  void addGestor (int cod, String email, String password) throws SQLException{
+        Connection conn = DBConnection.getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Inserir informação" + gestor + "(codigo, email, password) VALUES ("+cod+","+email+","+password+");");
+        System.out.println("Adicionado com sucesso:" + gestor);
+    } 
+
+    public ResultSet getGestor() throws SQLException{
+        Connection connection = getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("selecione * from" + gestor + ";");
+        return rs;
+    } 
+
+    public void deleteGestor (int cod) throws SQLException {
+        Connection conn = getConnection();
+        Statement statement = conn.createStatement();
+        statement.executeUpdate("Eliminar " + gestor + " com o seguinte código =" + cod + ";");
+        System.out.println("Eliminado com sucesso!");
     }
 
     public static void insereMarca(Marca m){

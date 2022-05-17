@@ -48,14 +48,14 @@ public class MainRouter extends AbstractVerticle {
     }
 
     public void addCliente(RoutingContext rc){
+        int cod = Integer.parseInt(rc.request().getParam("codigo"));
         String nome = rc.request().getParam("nome");
         String sobreNome = rc.request().getParam("sobrenome");
         String email = rc.request().getParam("email");
         String password = rc.request().getParam("password");
         int nrFiscal = Integer.parseInt(rc.request().getParam("nrFiscal"));
         int veiculo = Integer.parseInt(rc.request().getParam("veiculo"));
-        int cod = Integer.parseInt(rc.request().getParam("cod"));
-        Cliente cliente = new Cliente(nome, sobreNome, email, password, nrFiscal);
+        Cliente cliente = new Cliente(email, password, cod, nrFiscal, veiculo, nome, sobreNome);
         insereCliente(cliente);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
@@ -88,10 +88,11 @@ public class MainRouter extends AbstractVerticle {
         }catch (ParseException e){
             System.out.println(e);
         }
+        int cod  = Integer.parseInt(rc.request().getParam("codigo"));
         int tempo  = Integer.parseInt(rc.request().getParam("tempo"));
         int custo = Integer.parseInt(rc.request().getParam("custo"));
         String email = rc.request().getParam("email");
-        Reserva reserva = new Reserva(dataReserva, custo, tempo, email);
+        Reserva reserva = new Reserva(cod, dataReserva, custo, tempo, email);
         insereReserva(reserva);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 
@@ -116,10 +117,11 @@ public class MainRouter extends AbstractVerticle {
         }catch (ParseException e){
             System.out.println(e);
         }
+        int cod  = Integer.parseInt(rc.request().getParam("codigo"));
         int custo = Integer.parseInt(rc.request().getParam("custo"));
         int tempoEstacionado = Integer.parseInt(rc.request().getParam("tempoEstacionado"));
         String email = rc.request().getParam("email");
-        Faturacao faturacao = new Faturacao(dataFatura, custo, tempoEstacionado, email);
+        Faturacao faturacao = new Faturacao(cod, dataFatura, custo, tempoEstacionado, email);
         insereFaturacao(faturacao);
         HttpServerResponse response = rc.response();
         response.setStatusCode(200).putHeader("content-type", "text/plain; charset=utf-8").end("ok"); 

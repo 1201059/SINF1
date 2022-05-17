@@ -6,18 +6,20 @@ public class Cliente {
     private List<Viatura> lstViatura;
     
     String nome, email, sobreNome, password;
-    int nrFiscal, veiculo, cod;
+    int nrFiscal;
+
+    int veiculo, cod;
 
     private static int codigo = 0;
 
-    public Cliente(String nome, String sobreNome, String email, String password, int nrFiscal, List<Viatura> lstViatura) {
+    public Cliente(String email, String password, int cod, int nrFiscal, int veiculo, String nome, String sobreNome) {
+        this.email = email;
+        this.password = password;
+        this.cod = ++codigo;
+        this.nrFiscal = nrFiscal;
+        this.veiculo = veiculo;
         this.nome = nome;
         this.sobreNome = sobreNome;
-        this.email = email;
-        this.nrFiscal = nrFiscal;
-        this.cod = ++codigo;
-        this.lstViatura = lstViatura;
-        this.password = password;
     }
 
     public Cliente(String nome, String sobreNome, String email, String password, int nrFiscal) {

@@ -29,10 +29,6 @@ public class Gestor {
         return password;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -45,5 +41,5 @@ public class Gestor {
     public String toString() {
         return "gestor{" + "codigo=" + codigo + ", email=" + email + ", password=" + password + '}';
     }
-        
+
 }

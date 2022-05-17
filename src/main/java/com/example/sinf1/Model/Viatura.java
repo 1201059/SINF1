@@ -39,7 +39,6 @@ public class Viatura {
         this.modelo=viatura.modelo;
         this.matricula=viatura.matricula;
         this.data=viatura.data;
-
     }
 
     public int getCodigo() {

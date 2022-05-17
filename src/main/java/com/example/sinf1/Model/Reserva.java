@@ -26,7 +26,7 @@ public class Reserva {
         this.email = STR_DEFAULT;
     }
 
-    public Reserva(Date data, int custo, int tempo, String email) {
+    public Reserva(int cod, Date data, int custo, int tempo, String email) {
         this.cod = ++codigo;
         this.data = data;
         this.custo = custo;
